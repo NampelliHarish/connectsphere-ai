@@ -1,0 +1,36 @@
+Assessment Process
+
+Shortlisted candidates will be given a Development Assessment, where they must:
+1.	Read the demand note given below and understand the scope of work
+2.	Within 48 hours, build a functional Static mobile App for employees + Static web console for employees and admin command center for HR / Admins on React, Angular, Vue or Flutter. 
+3.	Ensure maximum code is AI-generated and then fine tuned by further prompts. Self coding by manual intervention not to exceed 20%.
+4.	Submit:
+	o	Git Repo link
+	o	Prompts used to define the scaffold and the corrections along with AI responses and outputs pasted in a txt file
+	o	Hosted Working static app on a public URL with employee and HR credentials.
+	o	Video walkthrough with narration of your app UI, features and functionalities
+
+
+Evaluation will be based on:
+•	Final application functionality and coverage of the demand in the dynamic interactive UI with seeded data for all the stages and states.
+•	Utilization of smart and modern elements and UX enhancement driven approach with a clutter free aesthetics.
+•	Understanding of requirements
+•	Prompting quality
+•	AI output correction ability
+•	Functional completeness
+•	Execution agility
+
+
+Build a dynamic and Interactive Corporate Intranet for a web application(all detailed features) with a mobile apk (limited features) for all employees across the Organization ecosystem, covering all departments (with isolation wherever required), verticals and departments. The intent is not HR transactions like attendance, leaves etc, but to create one common internal platform that improves visibility, engagement, alignment and culture.
+
+This should be a central space where employees can see Management vision, leadership messages, monthly leadership meet outcomes, company announcements, business updates, project wins, footprints and key milestones. It should give clarity on what different teams and verticals are doing and create visible departmental and organization-wide impact footprints. Should celebrate achievements and provide visibility to people involved. Company engagement calendars should have deeper visualization. Dashboard should play a major role in prioritization of information and engagement.
+
+The platform should help break silos by making it easier to discover colleagues, understand roles and collaborate across functions, yet maintain visibility controls across non common pools (multi-tenancy).
+
+We also want to strengthen recognition and celebration culture. There should be peer appreciation, achievement highlights, new joinee welcome carousels, celebration posts with replies, employee experiences, and some gamification elements with leaderboards to encourage participation and ownership. Should consider moderation techniques to avoid clutter and unwanted communication. 
+
+Additionally, it should act as a simple knowledge and reference hub where employee handbooks, policies and important documents are easily accessible, along with an image and video gallery of office events and celebrations. Forum like environment adds value to standard knowledgebase with a two way exchange. 
+
+Overall, this should become our structured internal engagement and communication layer, which can later integrate into any other larger application if required. All employees including HRs and Admins who also are employees should be able to enjoy the corporate tool. 
+
+Note: The application should be modern, feature packed with elements and behavior promoting interacting and engagement but should not be overwhelming. Schema structure, database and architecture design, Element selection, UI structure, Modularity, color and thematic representation, ideation of feature availability, prioritization will be main focus of evaluation. Simple yet Powerful UX is the most important factor.
