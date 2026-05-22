@@ -1,7 +1,7 @@
 import { useState } from 'react';
 import { useLocation } from 'wouter';
-import { motion } from 'framer-motion';
-import { Eye, EyeOff, Zap, ArrowRight, Shield, Users, Sparkles } from 'lucide-react';
+import { motion, AnimatePresence } from 'framer-motion';
+import { Eye, EyeOff, Zap, ArrowRight, Shield, Users, Sparkles, AlertCircle } from 'lucide-react';
 import { AuthLayout } from '@/layouts/AuthLayout';
 import { Button } from '@/components/ui/button';
 import { Input } from '@/components/ui/input';
@@ -9,28 +9,92 @@ import { Label } from '@/components/ui/label';
 import { useAuth } from '@/context/AuthContext';
 import type { UserRole } from '@/context/AuthContext';
 
-const roleCards: { role: UserRole; label: string; name: string; title: string; color: string; bg: string }[] = [
-  { role: 'employee', label: 'Employee', name: 'Alex Rivera', title: 'Senior Engineer', color: 'text-cyan-500', bg: 'bg-cyan-500/10 border-cyan-500/20 hover:border-cyan-500/50' },
-  { role: 'admin', label: 'HR Admin', name: 'Michael Torres', title: 'HR Director', color: 'text-purple-500', bg: 'bg-purple-500/10 border-purple-500/20 hover:border-purple-500/50' },
-  { role: 'ceo', label: 'CEO', name: 'Sarah Chen', title: 'Chief Executive Officer', color: 'text-indigo-500', bg: 'bg-indigo-500/10 border-indigo-500/20 hover:border-indigo-500/50' },
+interface DemoCard {
+  role: UserRole;
+  label: string;
+  name: string;
+  title: string;
+  email: string;
+  password: string;
+  color: string;
+  bg: string;
+}
+
+const DEMO_CARDS: DemoCard[] = [
+  {
+    role: 'employee',
+    label: 'Employee',
+    name: 'Alex Rivera',
+    title: 'Senior Engineer',
+    email: 'employee@connectsphere.com',
+    password: 'password123',
+    color: 'text-cyan-500',
+    bg: 'bg-cyan-500/10 border-cyan-500/20 hover:border-cyan-500/50',
+  },
+  {
+    role: 'admin',
+    label: 'HR Admin',
+    name: 'Michael Torres',
+    title: 'HR Director',
+    email: 'admin@connectsphere.com',
+    password: 'admin123',
+    color: 'text-purple-500',
+    bg: 'bg-purple-500/10 border-purple-500/20 hover:border-purple-500/50',
+  },
+  {
+    role: 'ceo',
+    label: 'CEO',
+    name: 'Sarah Chen',
+    title: 'Chief Executive Officer',
+    email: 'ceo@connectsphere.com',
+    password: 'ceo123',
+    color: 'text-indigo-500',
+    bg: 'bg-indigo-500/10 border-indigo-500/20 hover:border-indigo-500/50',
+  },
 ];
 
 export default function LoginPage() {
   const [, setLocation] = useLocation();
-  const { login } = useAuth();
+  const { loginWithCredentials } = useAuth();
   const [showPassword, setShowPassword] = useState(false);
-  const [selectedRole, setSelectedRole] = useState<UserRole>('employee');
+  const [email, setEmail] = useState('employee@connectsphere.com');
+  const [password, setPassword] = useState('password123');
+  const [activeCard, setActiveCard] = useState<UserRole>('employee');
   const [loading, setLoading] = useState(false);
-  const [email, setEmail] = useState('alex.rivera@connectsphere.io');
-  const [password, setPassword] = useState('••••••••');
+  const [error, setError] = useState<string | null>(null);
 
-  const handleLogin = (role?: UserRole) => {
-    const r = role ?? selectedRole;
+  const selectDemoCard = (card: DemoCard) => {
+    setActiveCard(card.role);
+    setEmail(card.email);
+    setPassword(card.password);
+    setError(null);
+  };
+
+  const handleSignIn = () => {
+    setError(null);
+    if (!email.trim()) {
+      setError('Please enter your email address.');
+      return;
+    }
+    if (!password) {
+      setError('Please enter your password.');
+      return;
+    }
     setLoading(true);
+    // Small delay to show the loading state
     setTimeout(() => {
-      login(r);
-      setLocation('/');
-    }, 700);
+      const result = loginWithCredentials(email, password);
+      if (result.success) {
+        setLocation('/');
+      } else {
+        setLoading(false);
+        setError(result.error ?? 'Sign in failed.');
+      }
+    }, 600);
+  };
+
+  const handleKeyDown = (e: React.KeyboardEvent) => {
+    if (e.key === 'Enter') handleSignIn();
   };
 
   return (
@@ -80,15 +144,18 @@ export default function LoginPage() {
               <div className="relative flex justify-center"><span className="bg-card px-3 text-xs text-muted-foreground">or sign in with email</span></div>
             </div>
 
-            <div className="space-y-4">
+            {/* Email + Password */}
+            <div className="space-y-4" onKeyDown={handleKeyDown}>
               <div>
                 <Label htmlFor="email" className="text-xs font-medium">Email address</Label>
                 <Input
                   id="email"
                   type="email"
                   value={email}
-                  onChange={e => setEmail(e.target.value)}
+                  onChange={e => { setEmail(e.target.value); setError(null); }}
                   className="mt-1.5 h-10"
+                  placeholder="you@connectsphere.com"
+                  autoComplete="email"
                   data-testid="input-email"
                 />
               </div>
@@ -99,8 +166,10 @@ export default function LoginPage() {
                     id="password"
                     type={showPassword ? 'text' : 'password'}
                     value={password}
-                    onChange={e => setPassword(e.target.value)}
+                    onChange={e => { setPassword(e.target.value); setError(null); }}
                     className="h-10 pr-10"
+                    placeholder="Enter your password"
+                    autoComplete="current-password"
                     data-testid="input-password"
                   />
                   <button
@@ -114,36 +183,60 @@ export default function LoginPage() {
                 </div>
               </div>
             </div>
+
+            {/* Error message */}
+            <AnimatePresence>
+              {error && (
+                <motion.div
+                  initial={{ opacity: 0, height: 0, marginTop: 0 }}
+                  animate={{ opacity: 1, height: 'auto', marginTop: 12 }}
+                  exit={{ opacity: 0, height: 0, marginTop: 0 }}
+                  className="overflow-hidden"
+                >
+                  <div className="flex items-center gap-2 text-xs text-destructive bg-destructive/10 border border-destructive/20 rounded-lg px-3 py-2.5" data-testid="auth-error">
+                    <AlertCircle size={13} className="flex-shrink-0" />
+                    {error}
+                  </div>
+                </motion.div>
+              )}
+            </AnimatePresence>
           </div>
 
-          {/* Demo role selector */}
+          {/* Demo account cards */}
           <div className="px-6 pt-5">
-            <p className="text-xs font-semibold text-muted-foreground uppercase tracking-wider mb-3">Demo accounts — click to sign in</p>
+            <p className="text-xs font-semibold text-muted-foreground uppercase tracking-wider mb-3">
+              Demo accounts — click to fill credentials
+            </p>
             <div className="grid grid-cols-3 gap-2">
-              {roleCards.map(({ role, label, name, title, color, bg }) => (
+              {DEMO_CARDS.map(card => (
                 <button
-                  key={role}
-                  onClick={() => handleLogin(role)}
-                  className={`border rounded-xl p-3 text-left transition-all duration-200 cursor-pointer ${bg} ${selectedRole === role ? 'ring-2 ring-primary' : ''}`}
-                  data-testid={`button-login-${role}`}
+                  key={card.role}
+                  onClick={() => selectDemoCard(card)}
+                  className={`border rounded-xl p-3 text-left transition-all duration-200 cursor-pointer ${card.bg} ${activeCard === card.role ? 'ring-2 ring-primary' : ''}`}
+                  data-testid={`button-login-${card.role}`}
                 >
-                  <div className={`text-xs font-bold ${color} mb-1`}>{label}</div>
-                  <div className="text-xs font-medium text-foreground truncate">{name}</div>
-                  <div className="text-[10px] text-muted-foreground truncate">{title}</div>
+                  <div className={`text-xs font-bold ${card.color} mb-1`}>{card.label}</div>
+                  <div className="text-xs font-medium text-foreground truncate">{card.name}</div>
+                  <div className="text-[10px] text-muted-foreground truncate">{card.title}</div>
                 </button>
               ))}
             </div>
           </div>
 
+          {/* Sign in button */}
           <div className="p-6 pt-4">
             <Button
               className="w-full h-10 gap-2"
-              onClick={() => handleLogin()}
+              onClick={handleSignIn}
               disabled={loading}
               data-testid="button-sign-in"
             >
               {loading ? (
-                <motion.div className="w-4 h-4 border-2 border-white/30 border-t-white rounded-full" animate={{ rotate: 360 }} transition={{ repeat: Infinity, duration: 0.8 }} />
+                <motion.div
+                  className="w-4 h-4 border-2 border-white/30 border-t-white rounded-full"
+                  animate={{ rotate: 360 }}
+                  transition={{ repeat: Infinity, duration: 0.8 }}
+                />
               ) : (
                 <>Sign in <ArrowRight size={16} /></>
               )}
