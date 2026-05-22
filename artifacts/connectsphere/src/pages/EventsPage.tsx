@@ -52,7 +52,7 @@ export default function EventsPage() {
       <motion.div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-5" variants={container} initial="hidden" animate="show">
         {displayed.map(ev => {
           const d = new Date(ev.date);
-          const full = ev.maxCapacity && ev.rsvpCount >= ev.maxCapacity;
+          const full = !!ev.maxCapacity && ev.rsvpCount >= ev.maxCapacity;
           return (
             <motion.div key={ev.id} variants={item}
               className="bg-card border border-card-border rounded-xl overflow-hidden hover:shadow-md transition-all group"
