@@ -1,0 +1,8 @@
+uploads = []
+outputs = []
+
+[[generated]]
+id = "qH1jo2SQ9AekYsFx3nCI0"
+uri = "file://artifacts/connectsphere-mobile/assets/images/icon.png"
+type = "image"
+title = "connectsphere mobile app icon"
