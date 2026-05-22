@@ -1,0 +1,279 @@
+You are a senior AI-first Product Engineer and UX-focused Frontend Architect.
+
+Build a COMPLETE modern corporate intranet web application prototype with a mobile-responsive design using React + Vite + Tailwind CSS.
+
+The application should look like a production-grade SaaS product built for large enterprises.
+
+IMPORTANT:
+- This is a frontend-only prototype with seeded/mock/static data.
+- No backend required.
+- No database required.
+- Use local JSON/mock data.
+- Focus heavily on UX, engagement, interactivity, modern aesthetics, modular architecture, and clean UI.
+- Use reusable components.
+- Ensure responsive design for desktop, tablet, and mobile.
+- Create realistic dashboards and interactions.
+- Add smooth transitions and hover states.
+- Avoid cluttered UI.
+- Use modern SaaS design patterns.
+- Prioritize information hierarchy and engagement.
+
+Tech Stack:
+- React.js
+- Vite
+- Tailwind CSS
+- React Router
+- Framer Motion
+- Lucide React icons
+- Recharts for analytics
+- Local mock JSON data
+- Context API or simple state management
+
+Design Style:
+- Premium modern enterprise UI
+- Clean cards
+- Soft shadows
+- Rounded corners
+- Interactive widgets
+- Glassmorphism where appropriate
+- Corporate yet engaging
+- Dark/light mode toggle
+- Smooth animations
+- High readability
+- Strong spacing and alignment
+- Modern typography
+
+Application Name:
+“ConnectSphere AI”
+
+Core Goal:
+Build a dynamic and interactive Corporate Intranet platform for employees across the organization ecosystem covering all departments, verticals, teams, HR, Admins, and leadership communication.
+
+This is NOT an HR attendance/leave management app.
+
+The application should focus on:
+- Employee engagement
+- Internal communication
+- Leadership visibility
+- Cross-team collaboration
+- Recognition culture
+- Company-wide awareness
+- Gamification
+- Knowledge sharing
+- Department visibility
+- Organizational culture
+
+MAIN MODULES TO IMPLEMENT:
+
+1. AUTHENTICATION UI
+- Beautiful login page
+- Company branding
+- Role-based mock login:
+  - Employee
+  - HR/Admin
+- Animated background
+- Password visibility toggle
+- Social login mock buttons
+
+2. DASHBOARD
+Create a highly visual dashboard with:
+- Personalized greeting
+- Employee stats
+- Engagement score
+- Announcements
+- Upcoming events
+- Team highlights
+- Company KPIs
+- Trending discussions
+- Leadership spotlight
+- Employee of the month
+- Recognition cards
+- Quick actions
+- Department insights
+- Poll widgets
+- Mini analytics charts
+- Interactive cards
+
+3. LEADERSHIP COMMUNICATION HUB
+- CEO messages
+- Monthly leadership updates
+- Strategic goals
+- Vision cards
+- Video message placeholders
+- Leadership timeline
+- Townhall highlights
+
+4. ANNOUNCEMENTS MODULE
+- Interactive announcements feed
+- Priority tags
+- Reactions
+- Comments
+- Save/bookmark feature
+- Pinned posts
+- Department filters
+
+5. EMPLOYEE DIRECTORY
+- Search employees
+- Filter by department/location
+- Profile cards
+- Skills tags
+- Reporting hierarchy visualization
+- Collaboration suggestions
+- Availability status
+
+6. RECOGNITION & APPRECIATION
+- Peer-to-peer appreciation
+- Badge system
+- Achievement highlights
+- Celebration wall
+- Milestone cards
+- Birthday/work anniversary widgets
+- Leaderboards
+- Points/rewards visualization
+
+7. GAMIFICATION
+- Weekly leaderboard
+- Participation points
+- Achievement badges
+- Department rankings
+- Engagement streaks
+- Activity score tracking
+
+8. COMPANY EVENTS
+- Event calendar
+- Event banners
+- RSVP mock interactions
+- Event gallery
+- Photo/video placeholders
+- Event timelines
+
+9. KNOWLEDGE HUB
+- Employee handbook
+- Policies section
+- Searchable knowledge articles
+- FAQs
+- Document cards
+- Categories
+- Bookmarking
+
+10. FORUM / DISCUSSION SPACE
+- Community discussions
+- Department groups
+- Topic threads
+- Replies
+- Trending topics
+- Moderation indicators
+
+11. HR / ADMIN COMMAND CENTER
+Admin dashboard with:
+- Employee engagement analytics
+- Department activity
+- Announcement management
+- Moderation queue
+- Content approval system
+- Employee participation charts
+- User role management UI
+- Platform metrics
+
+12. MULTI-TENANCY / ACCESS CONTROL UI
+Simulate visibility controls:
+- Public posts
+- Department-only visibility
+- Leadership-only updates
+- HR restricted sections
+- Access badges
+
+13. MOBILE EXPERIENCE
+Ensure mobile responsive design:
+- Bottom navigation
+- Compact cards
+- Swipeable sections
+- Mobile-first layouts where necessary
+
+14. UX ENHANCEMENTS
+Add:
+- Skeleton loaders
+- Empty states
+- Toast notifications
+- Interactive hover states
+- Micro animations
+- Smooth transitions
+- Tooltips
+- Smart onboarding cards
+
+15. SEEDED DATA
+Generate realistic mock data:
+- Employees
+- Announcements
+- Events
+- Recognition posts
+- Departments
+- Analytics
+- Forum discussions
+- Leadership messages
+
+16. FILE STRUCTURE
+Create scalable folder architecture:
+- components
+- pages
+- layouts
+- hooks
+- context
+- utils
+- data
+- assets
+
+17. FINAL OUTPUT REQUIREMENTS
+Provide:
+- Complete React project
+- Clean folder structure
+- Fully working frontend
+- Modern UI
+- Responsive design
+- Reusable components
+- Mock data included
+- Easy deployment readiness
+
+18. IMPORTANT EVALUATION PRIORITIES
+Optimize heavily for:
+- UX quality
+- Product thinking
+- AI-first rapid development
+- Visual hierarchy
+- Engagement-driven design
+- Clean aesthetics
+- Functional completeness
+- Interactive behavior
+- Scalability mindset
+
+19. ADDITIONAL ADVANCED FEATURES
+Include:
+- AI assistant widget mock UI
+- Smart recommendations
+- Sentiment pulse widget
+- Polls/surveys
+- Notification center
+- Activity feed
+- Personalized widgets
+
+20. OUTPUT FORMAT
+Generate:
+- Full project code
+- All components
+- Tailwind setup
+- Routing setup
+- Mock data files
+- Responsive layouts
+- Beautiful UI
+- Production-like architecture
+
+Start by generating:
+1. Project structure
+2. Installation commands
+3. Tailwind configuration
+4. Main layout architecture
+5. Dashboard implementation
+6. All reusable UI components
+7. Complete pages one by one
+
+Ensure the final result looks like a real enterprise SaaS product suitable for a frontend developer hiring assessment.
